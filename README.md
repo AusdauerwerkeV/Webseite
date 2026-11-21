@@ -21,7 +21,22 @@ Die Startseite zeigt den Trikot-Farbton, die Navigation, ein Hero-Foto mit dem S
 
 Das Repository `AusdauerwerkeV/Webseite` ist für GitHub Pages vorbereitet. Nach dem Push auf `main` veröffentlicht GitHub Actions die Website automatisch unter `https://ausdauerwerkev.github.io/Webseite/`.
 
-Im GitHub-Repository muss unter **Settings → Pages** als Build-Quelle **GitHub Actions** ausgewählt sein. Eine eigene Domain ist für diese Vorschau nicht erforderlich.
+### Erstmalig hochladen und veröffentlichen
+
+1. Öffne [das Vereins-Repository auf GitHub](https://github.com/AusdauerwerkeV/Webseite).
+2. Wähle **Settings → Pages** und stelle unter **Build and deployment → Source** **GitHub Actions** ein. Falls die Auswahl noch nicht erscheint, führe zuerst den nächsten Schritt aus und stelle sie danach ein.
+3. Öffne in VS Code das Terminal im Projektordner und führe den ersten Push aus:
+
+   ```powershell
+   git push -u origin main
+   ```
+
+4. Öffne den Reiter **Actions** im Repository und warte, bis **Deploy to GitHub Pages** erfolgreich abgeschlossen ist. Falls der erste Lauf vor dem Einstellen von Pages fehlschlug, starte ihn dort erneut.
+5. Teile anschließend diese Adresse mit dem Vorstand: <https://ausdauerwerkev.github.io/Webseite/>.
+
+Bei einer Anmeldeaufforderung melde dich über VS Code bzw. den Git Credential Manager an. Passwörter und Zugriffstoken gehören nicht in den Quellcode oder Chat.
+
+Für spätere Änderungen: erst lokal testen, dann in VS Code über **Source Control** committen und **Sync Changes** ausführen. GitHub Actions veröffentlicht den neuen Stand anschließend automatisch. Eine eigene Domain ist für diese Vorschau nicht erforderlich.
 
 ## Vor der späteren öffentlichen Vereinsseite
 
