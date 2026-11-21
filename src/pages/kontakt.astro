@@ -2,4 +2,172 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 ---
 
-<SiteLayout title="Kontakt" description="Kontakt zum Ausdauerwerk e.V." />
+<SiteLayout
+	title="Kontakt"
+	description="Kontakt zum Ausdauerwerk e.V. – Fragen zum Verein und zu gemeinsamen Aktivitäten."
+>
+	<div class="content">
+		<header class="page-header">
+			<p class="eyebrow">Ausdauerwerk e.V.</p>
+			<h1>Kontakt</h1>
+			<p class="lead">
+				Du möchtest mehr über unseren Verein oder unsere Aktivitäten erfahren? Wir freuen uns auf
+				deine Nachricht.
+			</p>
+		</header>
+
+		<div class="contact-grid">
+			<section class="contact-card" aria-labelledby="email-title">
+				<p class="eyebrow">Allgemeine Anfragen</p>
+				<h2 id="email-title">Schreib uns eine E-Mail</h2>
+				<p>
+					Für allgemeine Fragen zu unserem Verein und unseren Aktivitäten erreichst du uns am
+					besten per E-Mail.
+				</p>
+				<p class="placeholder"><a href="mailto:ausdauerwerk@gmx.de">ausdauerwerk@gmx.de</a></p>
+			</section>
+
+			<section class="contact-card" aria-labelledby="address-title">
+				<p class="eyebrow">Postanschrift</p>
+				<h2 id="address-title">Ausdauerwerk e.V.</h2>
+				<address>
+					c/o Herrn Emanuel Rassel<br />
+					Am Baumgarten 3<br />
+					73453 Abtsgmünd
+				</address>
+				<p class="note">Vereinssitz: Lorch</p>
+			</section>
+		</div>
+
+		<section class="additional-info" aria-labelledby="additional-info-title">
+			<h2 id="additional-info-title">So sind wir organisiert</h2>
+			<p>
+				Wir sind an verschiedenen Orten zuhause. Feste Trainings- oder
+				Öffnungszeiten gibt es deshalb nicht; konkrete Aktivitäten stimmen wir gemeinsam ab.
+			</p>
+		</section>
+	</div>
+</SiteLayout>
+
+<style>
+	.content {
+		width: min(920px, calc(100% - 3rem));
+		margin: 0 auto;
+	}
+
+	.page-header {
+		max-width: 760px;
+		padding: clamp(4rem, 9vw, 7rem) 0 2.5rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.9rem;
+		color: #1f7284;
+		font-size: 0.75rem;
+		font-weight: 750;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2,
+	p {
+		margin-top: 0;
+	}
+
+	h1 {
+		margin-bottom: 1.2rem;
+		color: #252b37;
+		font-size: clamp(2.8rem, 6vw, 5rem);
+		font-weight: 700;
+		line-height: 1.02;
+		letter-spacing: -0.065em;
+	}
+
+	h2 {
+		margin-bottom: 0.85rem;
+		color: #252b37;
+		font-size: clamp(1.45rem, 3vw, 1.85rem);
+		letter-spacing: -0.04em;
+	}
+
+	.lead {
+		max-width: 670px;
+		margin-bottom: 1.5rem;
+		color: #515967;
+		font-size: clamp(1rem, 1.8vw, 1.16rem);
+		line-height: 1.75;
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.contact-card {
+		min-width: 0;
+		padding: clamp(1.3rem, 4vw, 2rem);
+		background: #fff;
+		border: 1px solid #e1e6e5;
+		border-radius: 0.2rem;
+	}
+
+	.contact-card p:not(.eyebrow) {
+		color: #515967;
+		line-height: 1.7;
+	}
+
+	.contact-card .eyebrow {
+		margin-bottom: 0.65rem;
+	}
+
+	.contact-card p.placeholder {
+		color: #155966;
+		font-weight: 700;
+	}
+
+	.placeholder a {
+		color: inherit;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+	}
+
+	.contact-card address {
+		margin-bottom: 0.7rem;
+		color: #252b37;
+		font-style: normal;
+		line-height: 1.8;
+	}
+
+	.contact-card .note {
+		margin-bottom: 0;
+		color: #65707c;
+		font-size: 0.85rem;
+	}
+
+	.additional-info {
+		max-width: 700px;
+		padding: 3.5rem 0 6rem;
+	}
+
+	.additional-info p {
+		margin-bottom: 0;
+		color: #515967;
+		line-height: 1.75;
+	}
+
+	@media (max-width: 640px) {
+		.content {
+			width: calc(100% - 2rem);
+		}
+
+		.contact-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.additional-info {
+			padding: 2.8rem 0 4rem;
+		}
+	}
+</style>

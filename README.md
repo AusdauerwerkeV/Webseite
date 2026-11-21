@@ -13,9 +13,9 @@ npm.cmd run dev
 
 Die lokale Vorschau ist anschließend unter `http://localhost:4321` erreichbar. Beenden kannst du sie im Terminal mit `Ctrl+C`.
 
-## Aktueller Entwurf
+## Aktueller Stand
 
-Die Startseite zeigt den Trikot-Farbton, die Navigation, ein Hero-Foto mit dem Slogan „Zusammen mehr Strecke machen.“ und das Vereinslogo. Die verlinkten Seiten für Verein, Events, Bildergalerie, Kontakt und Impressum sind zunächst absichtlich leer.
+Die Startseite zeigt den Trikot-Farbton, die Navigation, ein Hero-Foto mit dem Slogan „Zusammen mehr Strecke machen.“ und das Vereinslogo. Die Vereinsseite enthält eine Kurzbeschreibung und den Vorstand. Kontakt und Impressum enthalten die Vereinsdaten. Die Erforderlichkeit einer redaktionell verantwortlichen Person ist noch zu prüfen; Events und Bildergalerie sind noch leer.
 
 ## GitHub Pages
 
@@ -38,11 +38,14 @@ Bei einer Anmeldeaufforderung melde dich über VS Code bzw. den Git Credential M
 
 Für spätere Änderungen: erst lokal testen, dann in VS Code über **Source Control** committen und **Sync Changes** ausführen. GitHub Actions veröffentlicht den neuen Stand anschließend automatisch. Eine eigene Domain ist für diese Vorschau nicht erforderlich.
 
-## Vor der späteren öffentlichen Vereinsseite
+## Vor der breiten öffentlichen Bekanntmachung
 
-1. Texte und freigegebene Inhalte für die leeren Seiten ergänzen.
-2. Veröffentlichungsrechte und Einwilligung für das Hero-Foto klären.
-3. Impressum und Datenschutzhinweise passend zu den tatsächlich verwendeten Funktionen ergänzen.
-4. Die Website mit `npm.cmd run build` prüfen.
+1. Prüfen, ob für journalistisch-redaktionelle Inhalte eine verantwortliche Person anzugeben ist.
+2. Texte und freigegebene Inhalte für Events und Bildergalerie ergänzen.
+3. Veröffentlichungsrechte und Einwilligung für Fotos klären.
+4. Datenschutzhinweise passend zu den tatsächlich verwendeten Funktionen ergänzen.
+5. Die Website mit `npm.cmd run build` prüfen.
+
+Kontakt- und Impressumsseite enthalten die angegebene E-Mail-Adresse, Postanschrift und den Vereinssitz. Vereinsregisternummer, Registergericht, Vertretungsregelung und Umsatzsteuer-ID sind eingetragen. Ob eine redaktionell verantwortliche Person erforderlich ist, muss bei Veröffentlichung journalistisch-redaktioneller Inhalte geprüft werden. Bankverbindung und Steuernummer werden nicht veröffentlicht.
 
 Nur Inhalte, die öffentlich auf der Website stehen sollen, gehören in dieses GitHub-Projekt. Keine Zugangsdaten oder vertraulichen Mitgliederdaten einchecken. Der rohe WeTransfer-Ordner wird durch `.gitignore` ausgeschlossen; nur geprüfte und freigegebene Dateien nach `public/` übernehmen.
