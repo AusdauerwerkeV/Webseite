@@ -1,0 +1,34 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# unreviewed WeTransfer originals; add only approved public files to public/
+wetransfer_*/
+
+# Local assistant instructions and generated discussion PDFs
+AGENTS.md
+Ausdauerwerk-Startseite-Entwurf.pdf
+Ausdauerwerk-Vereinsseite-Entwurf.pdf
+Ausdauerwerk-Website-Entwurf-aktuell.pdf
+Ausdauerwerk-Website-Entwurf.pdf
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/

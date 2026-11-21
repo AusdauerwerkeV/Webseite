@@ -1,0 +1,233 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+const basePath = baseUrl === "/" ? "" : baseUrl.slice(0, -1);
+const path = Astro.url.pathname.startsWith(basePath)
+	? Astro.url.pathname.slice(basePath.length) || "/"
+	: Astro.url.pathname;
+const withBase = (url: string) => `${baseUrl}${url.replace(/^\/+/, "")}`;
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#1f7284" />
+		<link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
+		<title>{title} | Ausdauerwerk e.V.</title>
+	</head>
+	<body>
+		<a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="brand" href={withBase("/")} aria-label="Ausdauerwerk e.V. – Startseite">
+					<img class="brand-logo" src={withBase("/images/ausdauerwerk-horizontal-wht.png")} alt="Ausdauerwerk" />
+				</a>
+				<nav aria-label="Hauptnavigation">
+					<a href={withBase("/")} aria-current={path === "/" ? "page" : undefined}>Start</a>
+					<a href={withBase("/verein/")} aria-current={path.startsWith("/verein") ? "page" : undefined}>Verein</a>
+					<a href={withBase("/events/")} aria-current={path.startsWith("/events") ? "page" : undefined}>Events</a>
+					<a href={withBase("/bildergalerie/")} aria-current={path.startsWith("/bildergalerie") ? "page" : undefined}>
+						Bildergalerie
+					</a>
+				</nav>
+			</div>
+		</header>
+		<main id="inhalt">
+			<slot />
+		</main>
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<a class="brand footer-brand" href={withBase("/")} aria-label="Ausdauerwerk – Startseite">
+					<img class="brand-logo" src={withBase("/images/ausdauerwerk-horizontal-wht.png")} alt="Ausdauerwerk" />
+				</a>
+				<nav class="footer-links" aria-label="Rechtliches und Kontakt">
+					<a href={withBase("/kontakt/")}>Kontakt</a>
+					<a href={withBase("/impressum/")}>Impressum</a>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+		color: #252b37;
+		background: #f4f6f5;
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+		--jersey: #1f7284;
+		--jersey-dark: #155966;
+		--navy: #252b37;
+		--white: #fff;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		display: flex;
+		min-width: 320px;
+		min-height: 100vh;
+		min-height: 100svh;
+		margin: 0;
+		flex-direction: column;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	.skip-link {
+		position: absolute;
+		top: -5rem;
+		left: 1rem;
+		z-index: 10;
+		padding: 0.75rem 1rem;
+		color: var(--navy);
+		background: var(--white);
+		border-radius: 0.25rem;
+	}
+
+	.skip-link:focus {
+		top: 1rem;
+	}
+
+	.site-header,
+	.site-footer {
+		position: relative;
+		z-index: 1;
+		color: var(--white);
+		background: var(--jersey);
+	}
+
+	.header-inner,
+	.footer-inner {
+		display: flex;
+		width: min(1280px, calc(100% - 4rem));
+		min-height: 86px;
+		margin: 0 auto;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+
+	.brand {
+		display: inline-flex;
+		flex: 0 0 auto;
+		align-items: center;
+		text-decoration: none;
+	}
+
+	.brand-logo {
+		display: block;
+		width: min(220px, 30vw);
+		height: auto;
+	}
+
+	.site-header nav,
+	.footer-links {
+		display: flex;
+		gap: clamp(1.1rem, 3vw, 2.7rem);
+		align-items: center;
+	}
+
+	.site-header nav a,
+	.footer-links a {
+		color: var(--white);
+		font-size: 0.91rem;
+		font-weight: 650;
+		text-decoration: none;
+		text-underline-offset: 0.45rem;
+		transition: opacity 160ms ease;
+	}
+
+	.site-header nav a:hover,
+	.site-header nav a[aria-current="page"],
+	.footer-links a:hover {
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+	}
+
+	.site-header nav a:hover,
+	.footer-links a:hover {
+		opacity: 0.82;
+	}
+
+	main {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+
+	.site-footer .footer-inner {
+		min-height: 78px;
+	}
+
+	.footer-links {
+		gap: 2rem;
+	}
+
+	@media (max-width: 760px) {
+		.header-inner,
+		.footer-inner {
+			width: calc(100% - 2rem);
+		}
+
+		.header-inner {
+			min-height: 0;
+			padding: 1rem 0 0.85rem;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.9rem;
+		}
+
+		.brand-logo {
+			width: min(190px, 54vw);
+		}
+
+		.site-header nav {
+			width: 100%;
+			gap: 0.75rem;
+			justify-content: space-between;
+		}
+
+		.site-header nav a,
+		.footer-links a {
+			font-size: clamp(0.73rem, 3.2vw, 0.88rem);
+		}
+
+		.footer-inner {
+			min-height: 0;
+			padding: 1rem 0;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.footer-links {
+			gap: 1.25rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			scroll-behavior: auto !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+</style>
