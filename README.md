@@ -15,7 +15,7 @@ Die lokale Vorschau ist anschließend unter `http://localhost:4321` erreichbar. 
 
 ## Aktueller Stand
 
-Die Startseite zeigt den Trikot-Farbton, die Navigation, ein Hero-Foto mit dem Slogan „Zusammen mehr Strecke machen.“ und das Vereinslogo. Die Vereinsseite enthält eine Kurzbeschreibung und den Vorstand. Kontakt und Impressum enthalten die Vereinsdaten. Die Erforderlichkeit einer redaktionell verantwortlichen Person ist noch zu prüfen; Events und Bildergalerie sind noch leer.
+Die Startseite zeigt den Trikot-Farbton, die Navigation, ein Hero-Foto mit dem Slogan „Zusammen mehr Strecke machen.“ und das Vereinslogo. Die Vereinsseite enthält eine Kurzbeschreibung, den Vorstand, einen Platzhalter für die Vereinsgeschichte und eine responsive Sponsorwand mit Logo-Platzhaltern. Kontakt, Impressum und Datenschutz enthalten Informationen zum Verein und zur Website. In der oberen Navigation führen die Instagram- und YouTube-Symbole zu den Vereinsprofilen. Events und Bildergalerie sind noch leer.
 
 ## GitHub Pages
 
@@ -43,7 +43,7 @@ Für spätere Änderungen: erst lokal testen, dann in VS Code über **Source Con
 1. Prüfen, ob für journalistisch-redaktionelle Inhalte eine verantwortliche Person anzugeben ist.
 2. Texte und freigegebene Inhalte für Events und Bildergalerie ergänzen.
 3. Veröffentlichungsrechte und Einwilligung für Fotos klären.
-4. Datenschutzhinweise passend zu den tatsächlich verwendeten Funktionen ergänzen.
+4. Angaben zu Hosting, Speicherdauer und Datenverarbeitung in der Datenschutzerklärung mit den aktuellen GitHub-Angaben abgleichen.
 5. Die Website mit `npm.cmd run build` prüfen.
 
 Kontakt- und Impressumsseite enthalten die angegebene E-Mail-Adresse, Postanschrift und den Vereinssitz. Vereinsregisternummer, Registergericht, Vertretungsregelung und Umsatzsteuer-ID sind eingetragen. Ob eine redaktionell verantwortliche Person erforderlich ist, muss bei Veröffentlichung journalistisch-redaktioneller Inhalte geprüft werden. Bankverbindung und Steuernummer werden nicht veröffentlicht.

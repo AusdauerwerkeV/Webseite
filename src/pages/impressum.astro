@@ -11,10 +11,6 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 			<p class="eyebrow">Rechtliches</p>
 			<h1>Impressum</h1>
 			<p class="lead">Angaben zum Anbieter dieser Website.</p>
-			<p class="draft-note" role="note">
-				Lokaler Entwurf: Die Platzhalter müssen vor einer Veröffentlichung anhand der Vereinssatzung
-				und des Vereinsregisters ergänzt und geprüft werden.
-			</p>
 		</header>
 
 		<div class="details">
@@ -63,22 +59,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 				</p>
 			</section>
 
-			<section aria-labelledby="editorial-title">
-				<h2 id="editorial-title">
-					Verantwortlich für journalistisch-redaktionelle Inhalte
-				</h2>
-				<p class="note">
-					Falls die Website journalistisch-redaktionelle Inhalte im Sinne von § 18 Abs. 2 MStV
-					enthält, hier die verantwortliche Person mit ladungsfähiger Anschrift eintragen:
-				</p>
-				<p><strong>[Name und ladungsfähige Anschrift – Erforderlichkeit prüfen]</strong></p>
-			</section>
 		</div>
-
-		<p class="legal-note">
-			Dies ist ein Arbeitsentwurf und keine Rechtsberatung. Bitte vor der Veröffentlichung prüfen,
-			welche Angaben für den Verein und die konkreten Inhalte der Website erforderlich sind.
-		</p>
 	</div>
 </SiteLayout>
 
@@ -131,16 +112,6 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 		line-height: 1.7;
 	}
 
-	.draft-note {
-		margin-bottom: 0;
-		padding: 0.8rem 1rem;
-		color: #4a3c18;
-		background: #fff3cd;
-		border-left: 3px solid #d5a62e;
-		font-size: 0.9rem;
-		line-height: 1.55;
-	}
-
 	.details {
 		display: grid;
 		gap: 1.8rem;
@@ -174,14 +145,6 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 		font-size: 0.92rem;
 	}
 
-	.legal-note {
-		max-width: 740px;
-		padding: 0 0 5rem;
-		color: #65707c;
-		font-size: 0.88rem;
-		line-height: 1.6;
-	}
-
 	@media (max-width: 640px) {
 		.content {
 			width: calc(100% - 2rem);
@@ -195,8 +158,5 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 			gap: 1.35rem;
 		}
 
-		.legal-note {
-			padding-bottom: 3.5rem;
-		}
 	}
 </style>

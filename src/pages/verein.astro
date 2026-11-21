@@ -7,6 +7,7 @@ const boardMembers = [
 	{ role: "Kassenwart", name: "Nico Hoffmann" },
 	{ role: "Pressewart", name: "Valentin Reinhard" },
 ];
+const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
 ---
 
 <SiteLayout
@@ -16,7 +17,9 @@ const boardMembers = [
 	<div class="content">
 		<section class="introduction" aria-labelledby="verein-title">
 			<p class="eyebrow">Ausdauerwerk e.V.</p>
-			<h1 id="verein-title">Radfahren verbindet.<br /><span>Ausdauer auch.</span></h1>
+			<h1 id="verein-title">
+				Sport verbindet.<br /><span>Ausdauer auch.</span>
+			</h1>
 			<p class="intro-copy">
 				Wir sind ein Ausdauersportverein mit dem Fahrrad im Mittelpunkt. Unsere Mitglieder sind
 				weit verstreut – verbunden durch die Freude am Radfahren und die Gemeinschaft im Verein.
@@ -43,6 +46,31 @@ const boardMembers = [
 							<span>{role}</span>
 						</div>
 					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="history" aria-labelledby="history-title">
+			<p class="eyebrow">Wie alles begann</p>
+			<h2 id="history-title">Unsere Geschichte</h2>
+			<p>
+				Hier folgt die Geschichte des Ausdauerwerk e.V. – von der Gründung bis heute.
+			</p>
+		</section>
+
+		<section class="sponsors" aria-labelledby="sponsors-title">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">Danke für eure Unterstützung</p>
+					<h2 id="sponsors-title">Unsere Sponsoren</h2>
+				</div>
+			</div>
+			<div class="sponsors-wall" role="list" aria-label="Platzhalter für die Sponsorenlogos">
+				{sponsorSlots.map((slot) => (
+					<div class="sponsor-tile" role="listitem" aria-label={`Sponsorlogo ${slot} folgt`}>
+						<span aria-hidden="true">+</span>
+						<small>Logo folgt</small>
+					</div>
 				))}
 			</div>
 		</section>
@@ -97,7 +125,27 @@ const boardMembers = [
 	}
 
 	.board {
-		padding: 2rem 0 6rem;
+		padding: 2rem 0 2.5rem;
+	}
+
+	.sponsors {
+		padding: 1rem 0 6rem;
+	}
+
+	.history {
+		max-width: 760px;
+		padding: 2rem 0;
+	}
+
+	.history h2 {
+		margin-bottom: 0.9rem;
+	}
+
+	.history p:last-child {
+		margin-bottom: 0;
+		color: #515967;
+		font-size: 1.05rem;
+		line-height: 1.75;
 	}
 
 	.section-heading {
@@ -180,6 +228,47 @@ const boardMembers = [
 		font-size: 0.8rem;
 	}
 
+	.sponsors-wall {
+		display: grid;
+		padding: 1rem;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.75rem;
+		background: #e8edec;
+		border-radius: 0.2rem;
+	}
+
+	.sponsor-tile {
+		display: flex;
+		min-height: 120px;
+		padding: 1rem;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 0.45rem;
+		color: #1f7284;
+		background: #fff;
+		border: 1px solid #dce2e1;
+		border-radius: 0.2rem;
+		box-shadow: 0 2px 6px rgb(37 43 55 / 5%);
+	}
+
+	.sponsor-tile > span {
+		display: grid;
+		width: 34px;
+		height: 34px;
+		place-items: center;
+		border: 1px dashed currentColor;
+		border-radius: 50%;
+		font-size: 1.25rem;
+		font-weight: 300;
+	}
+
+	.sponsor-tile small {
+		color: #65707c;
+		font-size: 0.76rem;
+		font-weight: 650;
+	}
+
 	@media (max-width: 760px) {
 		.content {
 			width: calc(100% - 2rem);
@@ -197,7 +286,26 @@ const boardMembers = [
 
 		.board {
 			padding-top: 1rem;
+			padding-bottom: 1.5rem;
+		}
+
+		.sponsors {
+			padding-top: 1rem;
 			padding-bottom: 4rem;
+		}
+
+		.sponsors-wall {
+			padding: 0.65rem;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 0.55rem;
+		}
+
+		.sponsor-tile {
+			min-height: 100px;
+		}
+
+		.history {
+			padding: 1.5rem 0;
 		}
 
 		.board-grid {
