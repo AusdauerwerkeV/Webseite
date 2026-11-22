@@ -8,6 +8,8 @@ node_modules/
 
 # unreviewed WeTransfer originals; add only approved public files to public/
 wetransfer_*/
+# Raw sponsor materials may contain print files and brand guides; publish only selected assets from public/images/sponsors/
+Sponsoren/
 
 # Local assistant instructions and generated discussion PDFs
 AGENTS.md

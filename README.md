@@ -15,7 +15,7 @@ Die lokale Vorschau ist anschließend unter `http://localhost:4321` erreichbar. 
 
 ## Aktueller Stand
 
-Die Startseite zeigt den Trikot-Farbton, die Navigation, ein Hero-Foto mit dem Slogan „Zusammen mehr Strecke machen.“ und das Vereinslogo. Die Vereinsseite enthält eine Kurzbeschreibung, den Vorstand, einen Platzhalter für die Vereinsgeschichte und eine responsive Sponsorwand mit Logo-Platzhaltern. Kontakt, Impressum und Datenschutz enthalten Informationen zum Verein und zur Website. In der oberen Navigation führen die Instagram- und YouTube-Symbole zu den Vereinsprofilen. Events und Bildergalerie sind noch leer.
+Die Startseite zeigt den Trikot-Farbton, die Navigation, eine kurze Hero-Filmsequenz mit dem Slogan „Zusammen mehr Strecke machen.“ und das Vereinslogo. Die Vereinsseite enthält eine Kurzbeschreibung, den Vorstand, einen Platzhalter für die Vereinsgeschichte und eine responsive Sponsorwand mit acht Sponsorlogos. Kontakt, Impressum und Datenschutz enthalten Informationen zum Verein und zur Website. In der oberen Navigation führen die Instagram- und YouTube-Symbole zu den Vereinsprofilen. Events und Bildergalerie sind noch leer.
 
 ## GitHub Pages
 

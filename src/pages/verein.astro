@@ -1,13 +1,33 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
 const boardMembers = [
-	{ role: "Vorsitzender", name: "Simon Blessinger" },
-	{ role: "Stellvertretender Vorsitzender", name: "Emanuel Rassel" },
-	{ role: "Kassenwart", name: "Nico Hoffmann" },
-	{ role: "Pressewart", name: "Valentin Reinhard" },
+	{ role: "Vorsitzender", name: "Simon Blessinger", image: null },
+	{ role: "Stellvertretender Vorsitzender", name: "Emanuel Rassel", image: null },
+	{
+		role: "Kassenwart",
+		name: "Nico Hoffmann",
+		image: `${baseUrl}images/board/nico.jpg`,
+	},
+	{
+		role: "Pressewart",
+		name: "Valentin Reinhard",
+		image: `${baseUrl}images/board/valentin.jpg`,
+	},
 ];
-const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
+const sponsors = [
+	{ name: "CURREX", image: `${baseUrl}images/sponsors/currex.png` },
+	{ name: "Di Carlo Museo & Vino di Maranello", image: `${baseUrl}images/sponsors/di-carlo.jpg` },
+	{ name: "Dürr & Feil Builtech Group", image: `${baseUrl}images/sponsors/duerr-feil.png` },
+	{ name: "Klout Design & Werbetechnik", image: `${baseUrl}images/sponsors/klout.svg` },
+	{ name: "WKS Haustechnik", image: `${baseUrl}images/sponsors/wks-haustechnik.jpg` },
+	{ name: "ESW Luft- und Klimatechnik", image: `${baseUrl}images/sponsors/esw.png` },
+	{ name: "IGH Ingenieurgesellschaften", image: `${baseUrl}images/sponsors/igh.png` },
+	{ name: "Tour Ginkgo – Rollt für kranke Kinder", image: `${baseUrl}images/sponsors/tourginkgo.png` },
+];
 ---
 
 <SiteLayout
@@ -32,15 +52,29 @@ const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
 					<p class="eyebrow">Die Menschen dahinter</p>
 					<h2 id="board-title">Unser Vorstand</h2>
 				</div>
-				<p>Fotos und weitere Informationen folgen.</p>
+				<p>Weitere Fotos und Informationen folgen.</p>
 			</div>
 			<div class="board-grid">
-				{boardMembers.map(({ role, name }) => (
+				{boardMembers.map(({ role, name, image }) => (
 					<article class="board-card">
-						<div class="photo-placeholder" role="img" aria-label={`Platzhalter für Foto von ${name}`}>
-							<span aria-hidden="true">+</span>
-							<small>Foto folgt</small>
-						</div>
+						{image ? (
+							<img
+								class="board-photo"
+								src={image}
+								alt={`Foto von ${name}`}
+								loading="lazy"
+								decoding="async"
+							/>
+						) : (
+							<div
+								class="photo-placeholder"
+								role="img"
+								aria-label={`Platzhalter für Foto von ${name}`}
+							>
+								<span aria-hidden="true">+</span>
+								<small>Foto folgt</small>
+							</div>
+						)}
 						<div class="board-caption">
 							<strong>{name}</strong>
 							<span>{role}</span>
@@ -65,11 +99,10 @@ const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
 					<h2 id="sponsors-title">Unsere Sponsoren</h2>
 				</div>
 			</div>
-			<div class="sponsors-wall" role="list" aria-label="Platzhalter für die Sponsorenlogos">
-				{sponsorSlots.map((slot) => (
-					<div class="sponsor-tile" role="listitem" aria-label={`Sponsorlogo ${slot} folgt`}>
-						<span aria-hidden="true">+</span>
-						<small>Logo folgt</small>
+			<div class="sponsors-wall" role="list" aria-label="Sponsorenlogos">
+				{sponsors.map(({ name, image }) => (
+					<div class="sponsor-tile" role="listitem">
+						<img src={image} alt={name} loading="lazy" decoding="async" />
 					</div>
 				))}
 			</div>
@@ -196,6 +229,16 @@ const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
 		border-radius: 0.2rem;
 	}
 
+	.board-photo {
+		display: block;
+		width: 100%;
+		min-height: 180px;
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		object-position: center;
+		border-radius: 0.2rem;
+	}
+
 	.photo-placeholder > span {
 		display: grid;
 		width: 42px;
@@ -239,34 +282,21 @@ const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
 
 	.sponsor-tile {
 		display: flex;
-		min-height: 120px;
+		min-height: 150px;
 		padding: 1rem;
 		align-items: center;
 		justify-content: center;
-		flex-direction: column;
-		gap: 0.45rem;
-		color: #1f7284;
 		background: #fff;
 		border: 1px solid #dce2e1;
 		border-radius: 0.2rem;
 		box-shadow: 0 2px 6px rgb(37 43 55 / 5%);
 	}
 
-	.sponsor-tile > span {
-		display: grid;
-		width: 34px;
-		height: 34px;
-		place-items: center;
-		border: 1px dashed currentColor;
-		border-radius: 50%;
-		font-size: 1.25rem;
-		font-weight: 300;
-	}
-
-	.sponsor-tile small {
-		color: #65707c;
-		font-size: 0.76rem;
-		font-weight: 650;
+	.sponsor-tile img {
+		display: block;
+		width: 100%;
+		max-height: 105px;
+		object-fit: contain;
 	}
 
 	@media (max-width: 760px) {
@@ -301,7 +331,8 @@ const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
 		}
 
 		.sponsor-tile {
-			min-height: 100px;
+			min-height: 120px;
+			padding: 0.75rem;
 		}
 
 		.history {
@@ -313,7 +344,8 @@ const sponsorSlots = Array.from({ length: 9 }, (_, index) => index + 1);
 			gap: 0.75rem;
 		}
 
-		.photo-placeholder {
+		.photo-placeholder,
+		.board-photo {
 			min-height: 145px;
 		}
 	}

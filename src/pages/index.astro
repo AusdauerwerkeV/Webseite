@@ -15,9 +15,21 @@ const withBase = (url: string) => `${baseUrl}${url.replace(/^\/+/, "")}`;
 		<img
 			class="hero-image"
 			src={withBase("/images/ausdauerwerk-hero.jpg")}
-			alt="Mitglied des Ausdauerwerk e.V. in Vereinsbekleidung"
+			alt=""
+			aria-hidden="true"
 			fetchpriority="high"
 		/>
+		<video
+			class="hero-video"
+			autoplay
+			muted
+			playsinline
+			loop
+			preload="auto"
+			aria-label="Filmsequenz des Ausdauerwerk e.V."
+		>
+			<source src={withBase("/videos/startsequenz.mp4")} type="video/mp4" />
+		</video>
 		<div class="hero-copy">
 			<p class="hero-eyebrow">Ausdauerwerk e.V.</p>
 			<h1 id="hero-title">Zusammen mehr<br />Strecke machen.</h1>
@@ -34,7 +46,7 @@ const withBase = (url: string) => `${baseUrl}${url.replace(/^\/+/, "")}`;
 		display: flex;
 		min-height: min(760px, max(540px, calc(100svh - 164px)));
 		overflow: hidden;
-		align-items: center;
+		align-items: flex-end;
 		background: #252b37;
 		isolation: isolate;
 	}
@@ -45,16 +57,18 @@ const withBase = (url: string) => `${baseUrl}${url.replace(/^\/+/, "")}`;
 		background: linear-gradient(
 			90deg,
 			#252b37 0%,
-			#252b37 34%,
-			rgb(37 43 55 / 94%) 44%,
-			rgb(37 43 55 / 65%) 62%,
-			rgb(37 43 55 / 16%) 100%
+			#252b37 28%,
+			rgb(37 43 55 / 78%) 40%,
+			rgb(37 43 55 / 38%) 56%,
+			rgb(37 43 55 / 8%) 75%,
+			transparent 100%
 		);
 		content: "";
 		inset: 0;
 	}
 
-	.hero-image {
+	.hero-image,
+	.hero-video {
 		position: absolute;
 		z-index: -2;
 		top: 0;
@@ -65,10 +79,14 @@ const withBase = (url: string) => `${baseUrl}${url.replace(/^\/+/, "")}`;
 		object-position: center 30%;
 	}
 
+	.hero-image {
+		display: none;
+	}
+
 	.hero-copy {
 		width: min(1280px, calc(100% - 4rem));
 		margin: 0 auto;
-		padding: 4rem 0;
+		padding: 4rem 0 6rem;
 		color: #fff;
 	}
 
@@ -116,21 +134,23 @@ const withBase = (url: string) => `${baseUrl}${url.replace(/^\/+/, "")}`;
 		.hero::before {
 			background: linear-gradient(
 				0deg,
-				rgb(37 43 55 / 98%) 0%,
-				rgb(37 43 55 / 91%) 31%,
-				rgb(37 43 55 / 48%) 70%,
-				rgb(37 43 55 / 16%) 100%
+				rgb(37 43 55 / 92%) 0%,
+				rgb(37 43 55 / 76%) 24%,
+				rgb(37 43 55 / 38%) 48%,
+				rgb(37 43 55 / 8%) 76%,
+				transparent 100%
 			);
 		}
 
-		.hero-image {
+		.hero-image,
+		.hero-video {
 			width: 100%;
 			object-position: center 25%;
 		}
 
 		.hero-copy {
 			width: calc(100% - 2rem);
-			padding: 3rem 0 4.5rem;
+			padding: 3rem 0 3.5rem;
 		}
 
 		.hero-eyebrow {
@@ -153,7 +173,12 @@ const withBase = (url: string) => `${baseUrl}${url.replace(/^\/+/, "")}`;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.hero-video {
+			display: none;
+		}
+
 		.hero-image {
+			display: block;
 			transition: none;
 		}
 	}
